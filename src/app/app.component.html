@@ -1,0 +1,129 @@
+<div class="container" style="margin-top: 1em;">
+  <!-- Sign up form -->
+  <form>
+    <!-- Sign up card -->
+    <div class="card person-card">
+      <div class="card-body">
+        <!-- Sex image -->
+        <img id="img_sex" class="person-img"
+             src="../assets/pallet.png">
+        <h2 id="who_message" class="card-title">Get the best variant.</h2>
+        <h3 id="who_message1" class="card-title" style="color: #007bff;">HRINI</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6" style="position: relative">
+        <img id="img_sex1" class="person-img"
+             src="../assets/pallet.png">
+      </div>
+      <div class="col-md-6" style="position: relative">
+        <img id="img_sex2" class="person-img" style="width: 566px;height: 464px;"
+             src="../assets/Carton_sizing.jpg">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6" style="padding:0.5em;">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Fill the dimensions of the pallet. (mm)</h3>
+            <div class="form-group">
+              <label for="length" class="col-form-label">Length - M</label>
+              <input id="length" type="text" required [(ngModel)]="length" class="form-control" placeholder="length"
+                     name="length">
+              <div id="last_name_feedback" class="invalid-feedback">
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="height" class="col-form-label">Pallet Loading Height - H</label>
+              <input id="height" type="text" required [(ngModel)]="height" class="form-control" placeholder="height"
+                     name="height">
+              <div id="last_name_feedback1" class="invalid-feedback">
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="width" class="col-form-label">Width - N</label>
+              <input id="width" type="text" required [(ngModel)]="width" class="form-control" placeholder="width"
+                     name="width">
+              <div id="last_name_feedback2" class="invalid-feedback">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" style="padding:0.5em;">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Fill the box dimensions. (mm)</h3>
+            <div class="form-group">
+              <label for="height" class="col-form-label">Length - a</label>
+              <input id="a" type="text" required [(ngModel)]="a" class="form-control" placeholder="a" name="a">
+              <div id="a1" class="invalid-feedback">
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="b" class="col-form-label">Width - b</label>
+              <input id="b" type="text" required [(ngModel)]="b" class="form-control" placeholder="b" name="b">
+              <div id="b1" class="invalid-feedback">
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="c" class="col-form-label">Height - c</label>
+              <input id="c" type="text" required [(ngModel)]="c" class="form-control" placeholder="c" name="c">
+              <div id="c1" class="invalid-feedback">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 1em;">
+      <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal"
+              (click)="loadAllVariants(width,length,height,a,b,c)" data-target="#myModal">
+        Calculate
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" style="color: #007bff;">Best Variants Are:</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div *ngFor="let variant of variants; let i = index">
+          <h5>{{variant.name}}</h5>
+          <p style="color: #007bff;">{{variant.variantNum}}</p>
+          <p>boxes can be placed.
+          </p>
+          <em style="color: #007bff;">
+            {{variant.formula}}
+          </em>
+
+          <hr>
+        </div>
+        <!--<div *ngIf="show">No suitable variants.</div>-->
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
